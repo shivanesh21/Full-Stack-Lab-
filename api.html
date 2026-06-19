@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AquaPure Drag Drop Location</title>
+
+<link rel="stylesheet" href="api.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>💧 AquaPure Smart System</h1>
+
+<nav>
+
+<a href="index.html">Index</a>
+
+<a href="product.html">Product</a>
+
+<a href="api.html">Api</a>
+
+</nav>
+
+</header>
+
+
+
+
+
+<section>
+
+
+<h2>Drag AquaPure Product</h2>
+
+
+<!-- Image on top -->
+
+<img 
+id="product"
+src="aquapure.png"
+draggable="true"
+ondragstart="drag(event)">
+
+
+
+<!-- Drop box -->
+
+<div id="dropbox"
+ondrop="drop(event)"
+ondragover="allowDrop(event)">
+
+
+Drop AquaPure Image Here
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+<section>
+
+
+<h2>Current Location</h2>
+
+
+<button onclick="getLocation()">
+
+Get Location
+
+</button>
+
+
+<p id="location">
+
+Latitude:
+<br>
+Longitude:
+
+</p>
+
+
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+
+<h2>Search Location</h2>
+
+
+<label>Latitude</label>
+
+<input type="text" id="lat">
+
+
+
+<label>Longitude</label>
+
+<input type="text" id="lon">
+
+
+
+<br>
+
+
+<button onclick="showMap()">
+
+Show Map
+
+</button>
+
+
+<br><br>
+
+
+<iframe
+id="map"
+width="600"
+height="400">
+
+</iframe>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<footer>
+
+<p>
+© 2026 AquaPure Water Solutions
+</p>
+
+
+</footer>
+
+
+
+
+
+
+<script>
+
+
+
+// Drag and Drop
+
+
+function allowDrop(event)
+{
+
+event.preventDefault();
+
+}
+
+
+
+function drag(event)
+{
+
+event.dataTransfer.setData(
+"text",
+event.target.id
+);
+
+}
+
+
+
+
+function drop(event)
+{
+
+event.preventDefault();
+
+
+
+let imageId =
+event.dataTransfer.getData("text");
+
+
+
+let image =
+document.getElementById(imageId);
+
+
+
+let box =
+document.getElementById("dropbox");
+
+
+
+// clear text
+
+box.innerHTML="";
+
+
+
+// copy image
+
+let clone =
+image.cloneNode(true);
+
+
+
+// fit image
+
+clone.style.width="100%";
+
+clone.style.height="100%";
+
+clone.style.objectFit="contain";
+
+
+
+// add inside box
+
+box.appendChild(clone);
+
+
+
+// popup message
+
+alert("✅ Product Added Successfully!");
+
+
+
+}
+
+
+
+
+
+
+
+// GEOLOCATION
+
+
+function getLocation()
+{
+
+
+if(navigator.geolocation)
+{
+
+
+navigator.geolocation.getCurrentPosition(showPosition);
+
+
+}
+
+else
+{
+
+alert("Geolocation not supported");
+
+}
+
+
+}
+
+
+
+
+
+function showPosition(position)
+{
+
+
+let latitude =
+position.coords.latitude;
+
+
+let longitude =
+position.coords.longitude;
+
+
+
+document.getElementById("location").innerHTML =
+
+"Latitude : "
++latitude+
+"<br>Longitude : "
++longitude;
+
+
+
+
+document.getElementById("map").src =
+
+"https://www.google.com/maps?q="
++latitude+
+","
++longitude+
+"&output=embed";
+
+
+
+}
+
+
+
+
+
+
+
+
+function showMap()
+{
+
+
+let latitude =
+document.getElementById("lat").value;
+
+
+
+let longitude =
+document.getElementById("lon").value;
+
+
+
+
+document.getElementById("map").src =
+
+"https://www.google.com/maps?q="
++latitude+
+","
++longitude+
+"&output=embed";
+
+
+
+}
+
+
+
+</script>
+
+
+
+
+</body>
+
+</html>

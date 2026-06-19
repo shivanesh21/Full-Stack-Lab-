@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AquaPure Product Registration</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<nav>
+    <a href="index.html">Index</a>
+    |
+    <a href="product.html">Product</a>
+    |
+    <a href="api.html">API</a>
+    <a href ="bootstrap.html">Bootstrap</a>
+</nav>
+<body>
+
+<header>
+    <h1>💧 AquaPure Water Purifier</h1>
+    <p>Clean Water, Healthy Life</p>
+</header>
+
+
+<div class="container">
+
+
+<h2>Customer Product Registration</h2>
+
+
+<form id="aquaForm">
+
+
+<label>Customer Name</label>
+<input type="text" id="name">
+
+
+<label>Password</label>
+<input type="password" id="password">
+
+
+<label>Email</label>
+<input type="text" id="email">
+
+
+<label>Purchase Date</label>
+<input type="date" id="date">
+
+
+<label>Select Model</label>
+
+<select id="model">
+
+<option value="">Choose Model</option>
+<option>AquaPure Basic</option>
+<option>AquaPure Pro</option>
+<option>AquaPure Premium</option>
+
+</select>
+
+
+
+<label>Water Type</label>
+
+<div>
+
+<input type="radio" name="type" value="RO"> RO
+
+<input type="radio" name="type" value="UV"> UV
+
+<input type="radio" name="type" value="RO+UV"> RO + UV
+
+</div>
+
+
+
+<label>Features Required</label>
+
+<div>
+
+<input type="checkbox" value="Alkaline" class="feature">
+Alkaline
+
+<input type="checkbox" value="Smart Display" class="feature">
+Smart Display
+
+<input type="checkbox" value="Auto Cleaning" class="feature">
+Auto Cleaning
+
+</div>
+
+
+
+<label>Address</label>
+
+<textarea id="address"></textarea>
+
+
+
+<br>
+
+<button type="button" onclick="generateReport()">
+Submit
+</button>
+
+
+</form>
+
+
+<h2>Customer Report</h2>
+
+
+<table id="report">
+
+<tr>
+<th>Field</th>
+<th>Details</th>
+</tr>
+
+
+</table>
+
+
+</div>
+
+
+<footer>
+
+<p>
+© 2026 AquaPure Water Solutions | Contact: aquapure@gmail.com
+</p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
